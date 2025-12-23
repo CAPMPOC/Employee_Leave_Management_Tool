@@ -96,3 +96,11 @@ entity Notifications {
         createdAt    : Timestamp;
         read         : Boolean default false;
 }
+
+entity Me @(readonly) {
+    key id     : String;
+        email  : String;
+        roles  : array of String;
+        emp_ID : UUID;
+        name   : String;
+}
