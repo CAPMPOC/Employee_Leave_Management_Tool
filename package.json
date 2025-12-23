@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
+    "@sap/hdi-deploy": "4.9.5",
     "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
@@ -26,6 +27,9 @@
     },
     "requires": {
       "db": "hana"
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
     }
   },
   "workspaces": [
