@@ -27,10 +27,10 @@ entity Header {
 }
 
 entity LeaveTypes {
-    key code                       : String(20);
+    key code                       : String(20); // ANNUAL, SICK, UNPAID, COMPOFF
         name                       : String(60);
         requiresNote               : Boolean default false;
-        requiresAttachmentIfDaysGt : Integer default 0;
+        requiresAttachmentIfDaysGt : Integer default 0; // e.g., SICK -> 2
         maxConsecutiveDays         : Integer default 30;
         allowHalfDay               : Boolean default true;
 }
@@ -65,13 +65,15 @@ entity LeaveRequests {
 entity Attachments {
     key ID        : UUID;
         leave_ID  : Association to LeaveRequests;
-        content   : LargeBinary;
-
-        @Core.ContentDisposition.Filename
-        fileName  : String(255);
 
         @Core.MediaType: mimeType
-        mimeType  : String(100);
+        content   : LargeBinary @stream;
+
+        @Core.ContentDisposition.Filename: fileName
+        fileName  : String;
+
+        @Core.IsMediaType                : true
+        mimeType  : String;
         sizeBytes : Integer;
 }
 
