@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.20.0",
-      "toolsId": "e94387c5-fe3f-4ec0-82f3-efaa0124f818"
+      "toolsId": "e35c0ec4-5d13-43c2-9ca1-87443d679f2e"
     },
     "dataSources": {
       "mainService": {
@@ -27,10 +27,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "Header-leavemgmt": {
+        "Header-manageLeave": {
           "semanticObject": "Header",
-          "action": "leavemgmt",
-          "title": "{{Header-leavemgmt.flpTitle}}",
+          "action": "manageLeave",
+          "title": "{{Header-manageLeave.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -126,5 +126,9 @@
       "id": "App",
       "async": true
     }
+  },
+  "sap.cloud": {
+    "public": true,
+    "service": "ui_managedapprouter"
   }
 }
