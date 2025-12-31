@@ -6,6 +6,18 @@
     {
       "name": "uaa.user",
       "description": "UAA"
+    },
+    {
+      "name": "Employee",
+      "description": "Employee role"
+    },
+    {
+      "name": "Manager",
+      "description": "Manager role"
+    },
+    {
+      "name": "HR",
+      "description": "HR role"
     }
   ],
   "role-templates": [
@@ -14,6 +26,50 @@
       "description": "UAA",
       "scope-references": [
         "uaa.user"
+      ]
+    },
+    {
+      "name": "Employee",
+      "description": "Employee",
+      "scope-references": [
+        "Employee"
+      ]
+    },
+    {
+      "name": "Manager",
+      "description": "Manager",
+      "scope-references": [
+        "Manager"
+      ]
+    },
+    {
+      "name": "HR",
+      "description": "HR",
+      "scope-references": [
+        "HR"
+      ]
+    }
+  ],
+  "role-collections": [
+    {
+      "name": "EmployeeCollection",
+      "description": "Grants Employee scope",
+      "role-template-references": [
+        "$XSAPPNAME.Employee"
+      ]
+    },
+    {
+      "name": "ManagerCollection",
+      "description": "Grants Manager scope",
+      "role-template-references": [
+        "$XSAPPNAME.Manager"
+      ]
+    },
+    {
+      "name": "HRCollection",
+      "description": "Grants HR scope",
+      "role-template-references": [
+        "$XSAPPNAME.HR"
       ]
     }
   ]
