@@ -8,6 +8,7 @@ modules:
   path: gen/srv
   requires:
   - name: Employee_Leave_Management_Tool-db
+  - name: uaa_Employee_Leave_Management_Tool
   provides:
   - name: srv-api
     properties:
@@ -86,6 +87,8 @@ resources:
     service-plan: hdi-shared
 - name: Employee_Leave_Management_Tool-destination-service
   type: org.cloudfoundry.managed-service
+  requires:
+    - name: srv-api
   parameters:
     config:
       HTML5Runtime_enabled: true
@@ -97,6 +100,13 @@ resources:
             ProxyType: Internet
             Type: HTTP
             URL: https://ui5.sap.com
+          - Authentication: NoAuthentication
+            Name: emp-leave-api
+            ProxyType: Internet
+            Type: HTTP
+            URL: ~{srv-api/srv-url}
+            HTML5.DynamicDestination: true
+            HTML5.ForwardAuthToken: true
           existing_destinations_policy: update
       version: 1.0.0
     service: destination
